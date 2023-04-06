@@ -2,6 +2,7 @@
     import {getContext} from 'svelte';
     export let showForm = false;
     $: showFormTag = showForm ? "showForm" : "todoFormHide";
+    let todoList = getContext('todoList');
 
     let getTask = () => {
         let task = {
@@ -14,7 +15,6 @@
 
     let addTask = () => {
         let task = getTask();
-        let todoList = getContext('todoList');
         todoList.update(list => {
             list.push(task);
             return list;
